@@ -18,10 +18,11 @@ Route::get('/', [BookController::class, 'indexFront'])->name('welcome');
 
 
 Auth::routes();
-
-Route::get('/home', [BookController::class, 'index'])->name('home');
-Route::get('book/add', [BookController::class, 'create']);
-Route::post('add', [BookController::class, 'store'])->name('add');
-Route::get('books/{id}/edit', [BookController::class, 'edit'])->name('books.edit');
-Route::post('books/{id}', [BookController::class, 'update'])->name('books.update');
-Route::get('books/{id}/destroy', [BookController::class, 'destroy'])->name('books.destroy');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', [BookController::class, 'index'])->name('home');
+    Route::get('book/add', [BookController::class, 'create']);
+    Route::post('add', [BookController::class, 'store'])->name('add');
+    Route::get('books/{id}/edit', [BookController::class, 'edit'])->name('books.edit');
+    Route::post('books/{id}', [BookController::class, 'update'])->name('books.update');
+    Route::get('books/{id}/destroy', [BookController::class, 'destroy'])->name('books.destroy');
+});
