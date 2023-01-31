@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', [BookController::class, 'indexFront'])->name('welcome');
-
+Route::get('books/{id}', [BookController::class, 'show'])->name('books.show');
 
 Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
