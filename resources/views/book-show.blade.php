@@ -31,7 +31,7 @@
            
             <tr>
                 <td>{{$books->id}}
-                <td>${{$books->title}}</td>
+                <td>{{$books->title}}</td>
                 <td>{{$books->author}}</td>
                 <td>{{$books->genre}}</td>
                 <td>{{$books->isbn}}</td>
